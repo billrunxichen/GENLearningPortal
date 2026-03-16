@@ -102,7 +102,7 @@ function ResourceCardTile({ resource, tone }: { resource: ResourceCard; tone: To
         </div>
       </div>
 
-      <div className="p-5">
+      <div className="px-6 py-5 md:px-7 md:py-6">
         <div className="mb-3 flex items-center gap-2">
           <div
             className={[
@@ -114,13 +114,13 @@ function ResourceCardTile({ resource, tone }: { resource: ResourceCard; tone: To
           </div>
         </div>
 
-        <h3 className={['mb-2 text-lg font-bold', isDark ? 'text-white' : 'text-slate-800'].join(' ')}>
+        <h3 className={['mb-3 text-lg font-bold leading-snug', isDark ? 'text-white' : 'text-slate-800'].join(' ')}>
           {resource.title}
         </h3>
-        <p className={['mb-4 text-sm leading-relaxed', isDark ? 'text-slate-300' : 'text-slate-600'].join(' ')}>
+        <p className={['text-sm leading-6', isDark ? 'text-slate-300' : 'text-slate-600'].join(' ')}>
           {resource.description}
         </p>
-        <div className={['flex items-center gap-2 text-sm font-semibold', isDark ? 'text-blue-200' : 'text-blue-600'].join(' ')}>
+        <div className={['mt-5 flex items-center gap-2 text-sm font-semibold', isDark ? 'text-blue-200' : 'text-blue-600'].join(' ')}>
           <span>Open resource</span>
           <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </div>

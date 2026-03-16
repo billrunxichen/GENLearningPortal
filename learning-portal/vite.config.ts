@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
-export default defineConfig({
-  base: '/geolearningportalV17/',
+const repoName = 'GENLearningPortal';
+
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? `/${repoName}/` : '/',
 
   plugins: [react()],
   resolve: {
@@ -58,4 +60,4 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
-});
+}));

@@ -2,10 +2,26 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
-const repoName = 'GENLearningPortal';
+function getBasePath(command: string) {
+  if (command !== 'build') {
+    return '/';
+  }
+
+  const explicitBasePath = process.env.BASE_PATH?.trim();
+  if (explicitBasePath) {
+    return explicitBasePath.startsWith('/') ? explicitBasePath : `/${explicitBasePath}`;
+  }
+
+  const repositorySlug = process.env.GITHUB_REPOSITORY?.split('/')[1];
+  if (repositorySlug) {
+    return `/${repositorySlug}/`;
+  }
+
+  return '/';
+}
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? `/${repoName}/` : '/',
+  base: getBasePath(command),
 
   plugins: [react()],
   resolve: {
